@@ -119,23 +119,23 @@ const testimonials = [
 
 function App() {
   return (
-    <div className="bg-gradient-to-b from-purple-900 via-black to-black min-h-screen text-white">
+    <div className="bg-black min-h-screen text-white">
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative h-screen">
-        <Card className="w-full h-full bg-black/[0.96] relative overflow-hidden">
+      <section className="relative min-h-screen flex items-center">
+        <Card className="w-full h-full bg-transparent relative overflow-hidden border-none">
           <Spotlight
             className="-top-40 left-0 md:left-60 md:-top-20"
-            fill="white"
+            fill="white/10"
           />
           
-          <div className="flex h-full">
-            <div className="flex-1 p-8 relative z-10 flex flex-col justify-center">
+          <div className="container mx-auto px-4 flex flex-col-reverse md:flex-row items-center justify-between h-full">
+            <div className="w-full md:w-1/2 text-center md:text-left relative z-10 py-12 md:py-0">
               <motion.h1 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-6xl md:text-7xl font-bold bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 text-transparent bg-clip-text bg-size-200 bg-pos-0 animate-gradient"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 text-transparent bg-clip-text bg-size-200 bg-pos-0 animate-gradient mb-4"
               >
                 Teertha Photography
               </motion.h1>
@@ -143,7 +143,7 @@ function App() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="mt-4 text-purple-200 max-w-lg text-xl"
+                className="mt-4 text-purple-200 max-w-lg text-base sm:text-lg md:text-xl mx-auto md:mx-0"
               >
                 Capturing life's precious moments with artistry and emotion
               </motion.p>
@@ -151,7 +151,7 @@ function App() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4 }}
-                className="mt-6 flex gap-4"
+                className="mt-6 flex justify-center md:justify-start gap-4"
               >
                 <a 
                   href="https://www.instagram.com/teertha_photography" 
@@ -159,7 +159,7 @@ function App() {
                   rel="noopener noreferrer"
                   className="text-purple-300 hover:text-purple-400 transition-colors"
                 >
-                  <Instagram size={24} />
+                  <Instagram size={20} sm:size={24} />
                 </a>
                 <a 
                   href="https://www.instagram.com/teertha_photography" 
@@ -167,15 +167,15 @@ function App() {
                   rel="noopener noreferrer"
                   className="text-purple-300 hover:text-purple-400 transition-colors"
                 >
-                  <Facebook size={24} />
+                  <Facebook size={20} sm:size={24} />
                 </a>
               </motion.div>
             </div>
 
-            <div className="flex-1 relative">
+            <div className="w-full md:w-1/2 h-[300px] sm:h-[400px] md:h-full relative mb-8 md:mb-0">
               <SplineScene 
                 scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-                className="w-full h-full"
+                className="w-full h-full object-contain"
               />
             </div>
           </div>
@@ -206,13 +206,24 @@ function App() {
                 scale: 1.02,
                 transition: { duration: 0.2, ease: "easeOut" }
               }}
-              className="relative group cursor-pointer overflow-hidden rounded-xl bg-black/50 backdrop-blur-sm will-change-transform"
+              whileTap={{ 
+                scale: 0.98,
+                transition: { duration: 0.1 }
+              }}
+              onClick={() => window.open(INSTAGRAM_URL, '_blank')}
+              className="relative group cursor-pointer overflow-hidden rounded-xl bg-black/50 backdrop-blur-sm will-change-transform 
+                hover:shadow-[0_0_30px_rgba(0,255,0,0.5)] 
+                active:shadow-[0_0_30px_rgba(0,255,0,0.5)]
+                hover:ring-2 hover:ring-green-500/50 
+                active:ring-2 active:ring-green-500/50
+                transition-all duration-300 ease-out"
             >
               <div className="aspect-[4/3] relative">
                 <img 
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-full object-cover transition-all duration-300 ease-out transform will-change-transform"
+                  className="w-full h-full object-cover transition-all duration-300 ease-out transform will-change-transform 
+                    group-hover:brightness-110 group-hover:contrast-125"
                 />
                 <div 
                   className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out"
@@ -286,18 +297,35 @@ function App() {
               </p>
             </div>
             <motion.div 
-              className="relative"
+              className="relative group"
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
+              whileHover={{ 
+                scale: 1.02,
+                transition: { duration: 0.2, ease: "easeOut" }
+              }}
+              whileTap={{ 
+                scale: 0.98,
+                transition: { duration: 0.1 }
+              }}
             >
-              <div className="relative rounded-lg overflow-hidden shadow-2xl">
+              <div className="relative rounded-lg overflow-hidden 
+                transition-all duration-300 ease-out
+                hover:shadow-[0_0_30px_rgba(0,255,0,0.5)]
+                active:shadow-[0_0_30px_rgba(0,255,0,0.5)]
+                hover:ring-2 hover:ring-green-500/50
+                active:ring-2 active:ring-green-500/50
+                group-hover:scale-[1.02]"
+              >
                 <img 
-                  src="/images/teerthap.jpg"
-                  alt="Teertha - Professional Photographer"
-                  className="w-full h-auto rounded-lg transform hover:scale-105 transition-transform duration-500"
+                  src="/images/tee.jpg" 
+                  alt="Teertha Photography Founder" 
+                  className="w-full h-full object-cover 
+                    transition-all duration-300 ease-out 
+                    group-hover:brightness-110 group-hover:contrast-125
+                    group-active:brightness-110 group-active:contrast-125"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-purple-900/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
               </div>
               <motion.div 
                 className="absolute -bottom-4 -right-4 bg-purple-900/90 backdrop-blur-sm p-4 rounded-lg shadow-xl"
