@@ -74,6 +74,17 @@ export function Navigation() {
         className="md:hidden fixed inset-y-0 right-0 w-64 bg-black/90 backdrop-blur-lg"
       >
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          {/* Add cancel button */}
+          <div className="flex justify-end p-2">
+            <motion.button
+              onClick={() => setIsOpen(false)}
+              className="text-white hover:text-gray-300"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <X className="h-6 w-6" />
+            </motion.button>
+          </div>
           <MobileNavLink href="#portfolio" icon={Camera} active={activeSection === 'portfolio'}>Portfolio</MobileNavLink>
           <MobileNavLink href="#about" icon={User} active={activeSection === 'about'}>About</MobileNavLink>
           <MobileNavLink href="#testimonials" icon={User} active={activeSection === 'testimonials'}>Testimonials</MobileNavLink>
